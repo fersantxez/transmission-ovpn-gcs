@@ -47,6 +47,7 @@ FROM base as gcsfuse
 ENV BUCKET="my-fake-bucket"
 ENV MOUNT_PATH="/share"
 ENV CREDENTIALS="/tmp/creds.json"
+ENV GCSFUSE_VERSION=1.2.0
 
 RUN apt-get update && apt-get install -y \
 	curl \
@@ -57,13 +58,11 @@ RUN apt-get update && apt-get install -y \
 	gnupg 
 	
 #gcsfuse
-RUN  export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s` && \
-	echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | \
-		tee /etc/apt/sources.list.d/gcsfuse.list && \
-	curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
-		apt-key add - 
-		# > /dev/null 2>&1
-RUN apt-get update && apt-get install -y gcsfuse
+RUN apt-get update -y && \
+    curl -LJO "https://github.com/GoogleCloudPlatform/gcsfuse/releases/download/v${GCSFUSE_VERSION}/gcsfuse_${GCSFUSE_VERSION}_amd64.deb" && \
+    apt-get -y install fuse && \
+    apt-get clean && \
+    dpkg -i "gcsfuse_${GCSFUSE_VERSION}_amd64.deb" 
 
 ADD ./entrypoint.sh /entrypoint.sh
 
