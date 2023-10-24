@@ -145,6 +145,10 @@ gcsfuse \
 	--implicit-dirs \
 	--stat-cache-ttl 1h \
 	--dir-mode 777 \
+	--debug_fs \
+	--debug_fuse \
+	--debug_gcs \
+	--log-file=/var/log/gcsfuse.log \
 	${BUCKET} \
 	${MOUNT_PATH} && \
   echo -e "Bucket gs://"${BUCKET}" mounted on "${MOUNT_PATH}
