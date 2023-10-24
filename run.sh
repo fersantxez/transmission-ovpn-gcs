@@ -1,6 +1,6 @@
-export VPN_USERNAME=$(cat ~/.ssh/./expressvpn_username.txt)
-export VPN_PASSWORD=$(cat ~/.ssh/./expressvpn_password.txt)
-export BUCKET=nodesktop
+export VPN_USERNAME=$(cat ~/.ssh/expressvpn_username.txt)
+export VPN_PASSWORD=$(cat ~/.ssh/expressvpn_password.txt)
+export BUCKET=currito
 export CREDENTIALS=~/.ssh/creds.json
 export UI_PASSWORD="nopassword"
 

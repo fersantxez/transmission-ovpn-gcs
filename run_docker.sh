@@ -37,7 +37,7 @@ echo "credentials file: "$CREDENTIALS
 # Run the Docker container with the specified environment variables
 # Mount the bucket in the given mountpoint
 docker run \
-    --name "transmission-ovpn-gcs" \
+    --name "xmiss" \
     --rm \
     --privileged \
     --device /dev/fuse \
