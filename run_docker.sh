@@ -58,7 +58,8 @@ docker run \
     -e DROP_DEFAULT_ROUTE=true \
     -e TRANSMISSION_WEB_UI="combustion" \
     -e TRANSMISSION_RPC_BIND_ADDRESS="0.0.0.0" \
-    -e TRANSMISSION_RPC_ENABLED=true \ 
+    -e TRANSMISSION_RPC_ENABLED=true \
+    -e LOCAL_NETWORK=192.168.86.0/24 \
     -p 9091:9091/tcp \
     -p 51413:51413/tcp \
     -p 51413:51413/udp \
